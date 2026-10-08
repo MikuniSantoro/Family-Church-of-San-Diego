@@ -13,4 +13,6 @@
 
 **How to run them:** give an AI `../PROMPT.md` first and build the foundation and Home (build order steps 1 to 4). Then give it one page file at a time, with `../PROMPT.md` still in context, in the order above. Each page file says which sections of the master prompt it relies on.
 
-**Preview:** every page has a static preview in `../preview/` (start with `node ../serve.js` and open `http://localhost:5178`). Previews use sample calendar, sermon and live data.
+**Preview:** run `node serve.js` from this repository folder, then open `http://localhost:5178`. The server opens `home-preview.html`; photos, stylesheets, and JavaScript are stored alongside the pages. You can also open `home-preview.html` directly in a browser.
+
+The previews use sample calendar, sermon, and live data. `build.js` currently requires missing `src/*.html` source files, so use the existing preview pages rather than running the build.
