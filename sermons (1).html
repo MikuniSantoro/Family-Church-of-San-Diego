@@ -1,0 +1,92 @@
+<main id="main">
+  <section class="photo hero sm dark" style="padding:0">
+    <div class="img"><img src="{{IMG}}/sermon-jasmine.jpg" alt="Co-Pastor Jasmine Santoro preaching at the front of the sanctuary" style="object-position:70% 40%" /></div>
+    <div class="wash cfc"></div>
+    <div class="wrap">
+      <div class="hero-grid flip">
+        <div></div>
+        <div>
+          <p class="label rise r1">Sermons and teachings</p>
+          <h1 class="display rise r2">Every message, <em>any</em> time.</h1>
+          <p class="lead rise r3">Watch this Sunday's service live, or catch up on a recent message. Our pastors share most Sundays, with guest speakers along the way.</p>
+          <div class="actions rise r4">
+            <a class="btn btn-white" href="#watch">Watch the latest {{ARROW}}</a>
+            <a class="btn btn-outline plain" id="heroLive" href="https://www.youtube.com/@FamilyChurchofSanDiego/live" target="_blank" rel="noopener">Watch live</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{BAR}}
+
+  <section class="navy dark" id="watch">
+    <div class="wrap stage-wrap">
+      <div class="stage" id="stage" data-reveal>
+        <div class="stage-frame"><div id="stageSlot"></div></div>
+        <div class="stage-info">
+          <div>
+            <p class="label" id="stageMeta"></p>
+            <p id="stageTitle"></p>
+          </div>
+          <a class="btn btn-white" id="stageLink" href="https://www.youtube.com/@FamilyChurchofSanDiego" target="_blank" rel="noopener">Watch on YouTube {{ARROW}}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white light" id="recent">
+    <div class="wrap split">
+      <p class="label" data-reveal>Recent messages</p>
+      <div>
+        <div id="sermonList"></div>
+        <div class="list-actions" data-reveal>
+          <a class="btn btn-blue" href="https://www.youtube.com/@FamilyChurchofSanDiego/videos" target="_blank" rel="noopener">All sermons on YouTube {{ARROW}}</a>
+          <a class="tlink" style="color:var(--blue-ink)" href="https://www.youtube.com/@FamilyChurchofSanDiego?sub_confirmation=1" target="_blank" rel="noopener">Subscribe</a>
+        </div>
+        <p class="label" style="margin-top:20px;color:var(--muted)">Preview: the channel's real recent videos as sample data</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream light" id="speakers">
+    <div class="wrap">
+      <div class="split">
+        <p class="label" data-reveal>Who you will hear</p>
+        <h2 class="h2" data-reveal>The voices from our <em>pulpit</em>.</h2>
+      </div>
+      <div class="speakers" data-stagger>
+        <div data-reveal><div class="face zoom" style="--zw:230%;--zx:-115%;--zy:-88%"><img src="{{IMG}}/pastors-santoro.jpg" alt="Co-Pastor Jasmine Santoro" loading="lazy" /></div><h3>Jasmine Santoro</h3><p class="label">Co-pastor</p><p class="count" data-speaker="Jasmine"></p></div>
+        <div data-reveal><div class="face zoom" style="--zw:230%;--zx:-12%;--zy:-68%"><img src="{{IMG}}/pastors-santoro.jpg" alt="Co-Pastor Mikuni Santoro" loading="lazy" /></div><h3>Mikuni Santoro</h3><p class="label">Co-pastor</p><p class="count" data-speaker="Mikuni"></p></div>
+        <div data-reveal><div class="face zoom" style="--zw:170%;--zx:-6%;--zy:-4%"><img src="{{IMG}}/pastor-frank.jpg" alt="Assistant Pastor Walter Frank" loading="lazy" /></div><h3>Walter Frank</h3><p class="label">Assistant pastor</p><p class="count" data-speaker="Walter"></p></div>
+      </div>
+      <p style="margin-top:28px;color:var(--muted)" data-reveal>We also welcome guest speakers from across the Family Federation.</p>
+    </div>
+  </section>
+
+  <section class="photo inset cta parallax dark text-right" id="live" style="margin-top:16px">
+    <div class="img"><img src="{{IMG}}/sermon-mikuni.jpg" alt="" loading="lazy" style="object-position:40% 32%" /></div>
+    <div class="wash bafc"></div>
+    <div class="wrap" data-stagger>
+      <p class="label" data-reveal style="color:var(--gold-light);margin-bottom:14px">Live on Sundays</p>
+      <h2 class="h2" data-reveal>Join us <em>live</em> at 11:00 AM.</h2>
+      <p data-reveal>The livestream starts a few minutes before every Sunday service, Pacific time. There is no livestream on picnic Sundays.</p>
+      <p class="label" id="nextLivestream" data-reveal style="color:#fff;margin:-8px 0 12px"></p>
+      <p class="label" id="liveSoon" hidden style="color:var(--gold-light);margin-bottom:14px"></p>
+      <div class="actions" data-reveal><a class="btn btn-white" id="livePill" href="https://www.youtube.com/@FamilyChurchofSanDiego/live" target="_blank" rel="noopener">Open the livestream {{ARROW}}</a></div>
+    </div>
+  </section>
+
+  <section class="bg-white light" id="devotion">
+    <div class="wrap split">
+      <p class="label" data-reveal>During the week</p>
+      <div data-stagger>
+        <span class="optional-note" data-reveal>Optional: shown only if the church runs one [Confirm]</span>
+        <h2 class="h2" data-reveal>Morning <em>devotion</em></h2>
+        <p class="label" style="margin:14px 0" data-reveal>Weekdays at 6:00 AM on Zoom</p>
+        <p style="max-width:52ch;margin-bottom:28px" data-reveal>Start the day with a short reading and prayer together. All are welcome, cameras optional.</p>
+        <div data-reveal><a class="btn btn-blue" href="#">Join the devotion {{ARROW}}</a></div>
+      </div>
+    </div>
+  </section>
+</main>

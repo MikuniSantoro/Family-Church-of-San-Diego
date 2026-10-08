@@ -1,0 +1,115 @@
+<main id="main">
+  <section class="photo hero dark" style="padding:0">
+    <div class="img"><img src="{{IMG}}/picnic-wisteria.jpg" alt="Church families gathered around a picnic table of food under a wisteria arbor" style="object-position:50% 55%" /></div>
+    <div class="wash cfc"></div>
+        <div class="wrap">
+      <div class="hero-grid">
+        <div></div>
+        <div>
+          <p class="label rise r1">God's Dream, One Family</p>
+          <h1 class="display rise r2">Come as you are. Stay like <em>family</em>.</h1>
+          <p class="lead rise r3">Family Church of San Diego is a home for anyone who wants to know God as a loving Heavenly Parent. We gather in La Mesa on Sundays at 11:00 AM to worship and learn, and most months we swap the service for a picnic together.</p>
+          <div class="actions rise r4">
+            <a class="btn btn-white" href="{{HREF:about}}#first-sunday">Plan your visit <span class="circ"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
+            <a class="btn btn-outline plain" href="{{HREF:sermons}}">Watch the latest sermon</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{BAR}}
+
+  <section class="bg-cream light">
+    <div class="wrap split">
+      <p class="label" data-reveal>When we gather</p>
+      <div>
+        <h2 class="h2" data-reveal>Sundays at eleven.</h2>
+        <div class="strip num" id="strip" aria-label="The next eight Sundays"></div>
+        <p class="caption" data-reveal>Service is at 11:00 AM on Sundays. On picnic Sundays (gold rings) there is no service; we meet at the picnic instead.<br><span id="nextPicnic"></span></p>
+        <p class="label" style="margin-top:10px;color:var(--muted)">Preview uses sample calendar data</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white light">
+    <div class="wrap split">
+      <p class="label" data-reveal>Our values</p>
+      <div data-stagger>
+        <div class="vrow" data-reveal><span class="label">I</span><h3>Faith</h3><p>We believe God is our Heavenly Parent, close enough to talk to and real enough to change how we live on a Tuesday. Our faith grows through prayer, study and the teachings of True Parents.</p></div>
+        <div class="vrow" data-reveal><span class="label">II</span><h3>Community</h3><p>Church is the people, not the building. We cook, serve, sing, pray and celebrate together, and we make room for whoever walks in next.</p></div>
+        <div class="vrow" data-reveal><span class="label">III</span><h3>Family</h3><p>Everything comes back to the family. We support marriages, raise our children together, and work toward homes where love is the first language.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="navy dark">
+    <div class="wrap sermon-grid">
+      <div data-stagger>
+        <p class="label" data-reveal>Latest message</p>
+        <h2 class="h2" style="margin-top:16px" data-reveal>Missed a Sunday? Catch <em>up</em> here.</h2>
+        <p class="body" data-reveal>Every message is recorded and posted to our YouTube channel. Watch the newest one here, or browse them all.</p>
+        <p class="label" id="homeSermonMeta" data-reveal style="margin-bottom:8px"></p>
+        <p class="home-sermon-title" id="homeSermonTitle" data-reveal></p>
+        <div class="links-row" data-reveal><a class="tlink" href="{{HREF:sermons}}">All sermons</a><a class="tlink" href="https://www.youtube.com/@FamilyChurchofSanDiego" target="_blank" rel="noopener">Subscribe on YouTube</a></div>
+      </div>
+      <div id="playerSlot" data-reveal style="--d:120ms">
+        <button class="poster" id="poster" aria-label="Play the latest sermon">
+          <img src="{{IMG}}/christmas-singers.jpg" alt="" />
+          <span class="play"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#1470AF"/></svg></span>
+                  </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream light" id="calendar">
+    <div class="wrap split">
+      <p class="label" data-reveal>Church calendar</p>
+      <div>
+        <h2 class="h2" style="margin-bottom:32px" data-reveal>What's happening.</h2>
+        <div id="events" data-stagger></div>
+        <p style="margin-top:28px" data-reveal><a class="tlink" style="color:var(--blue-ink)" href="#">See the full calendar</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white light">
+    <div class="wrap">
+      <div class="split" style="margin-bottom:40px">
+        <p class="label" data-reveal>Life together</p>
+        <div data-stagger>
+          <h2 class="h2" data-reveal>More than a <em>Sunday</em>.</h2>
+          <p style="margin-top:16px;max-width:56ch" data-reveal>Picnics, game nights, hikes and holiday music. Most of what makes us a family happens around the edges of the service.</p>
+        </div>
+      </div>
+      <div class="mosaic" data-stagger>
+        <figure class="m-a" data-reveal><div class="ph"><img src="{{IMG}}/congregation-2026.jpg" alt="The whole congregation together for a group photo after Sunday service, with children holding balloons" loading="lazy" /></div><figcaption class="label">Sunday family, February 2026</figcaption></figure>
+        <figure class="m-b" data-reveal><div class="ph"><img src="{{IMG}}/youth-room-billiards.jpg" alt="A father and daughter playing pool in the church youth room" loading="lazy" /></div><figcaption class="label">The youth room</figcaption></figure>
+        <figure class="m-c" data-reveal><div class="ph"><img src="{{IMG}}/young-adults.jpg" alt="Three young adults from the church smiling for a selfie in a park" loading="lazy" /></div><figcaption class="label">Young adults</figcaption></figure>
+        <figure class="m-d" data-reveal><div class="ph"><img src="{{IMG}}/hike.jpg" alt="Two church members walking a rocky mountain trail on a sunny day" loading="lazy" /></div><figcaption class="label">Hiking day</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="roots bg-cream light">
+    <div class="wrap" data-stagger>
+      <div class="rings-div" data-reveal><svg width="32" height="18"><use href="#rings"/></svg></div>
+      <p class="h2" data-reveal>God's dream has always been one family centered on true love.</p>
+      <p data-reveal>Our church grew from the life and work of Rev. Sun Myung Moon and Dr. Hak Ja Han Moon, who began the Marriage Blessing in 1960 and spent their lives inviting people of every race and religion into one family under God.</p>
+      <div data-reveal><a class="tlink" href="{{HREF:about}}#founders">Meet our founders</a></div>
+    </div>
+  </section>
+
+  <section class="photo inset cta parallax dark" style="margin-top:0">
+    <div class="img"><img src="{{IMG}}/picnic-park.jpg" alt="Church members gathered under a pine tree at a park picnic with tables of food" loading="lazy" style="object-position:50% 60%" /></div>
+    <div class="wash bafc"></div>
+        <div class="wrap" data-stagger>
+      <h2 class="h2" id="cta-h" data-reveal>Come for the service. Stay for the <em>people</em>.</h2>
+      <p id="cta-p" data-reveal>There is always coffee and conversation after the service. Most months one Sunday becomes a picnic instead; check the calendar for the next one.</p>
+      <div class="actions" data-reveal>
+        <a class="btn btn-white" href="{{HREF:about}}#first-sunday">Plan your visit <span class="circ"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
+        <a class="btn btn-outline plain" href="{{MAPS}}" target="_blank" rel="noopener">Get directions</a>
+      </div>
+    </div>
+  </section>
+</main>

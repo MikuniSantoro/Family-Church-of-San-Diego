@@ -1,0 +1,92 @@
+<main id="main">
+  <section class="photo hero sm dark" style="padding:0">
+    <div class="img"><img src="{{IMG}}/hike.jpg" alt="Two church members walking a rocky mountain trail on a sunny day" style="object-position:50% 60%" /></div>
+    <div class="wash cfc"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div></div>
+        <div>
+          <p class="label rise r1">Giving</p>
+          <h1 class="display rise r2">Give with a <em>grateful</em> heart.</h1>
+          <p class="lead rise r3">Your generosity keeps our doors open on Sundays, supports families in need, and helps us share God's dream with San Diego. Thank you.</p>
+          <div class="actions rise r4">
+            <a class="btn btn-white" href="#ways">Give by Zelle {{ARROW}}</a>
+            <a class="btn btn-outline plain" href="#where">Where it goes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{BAR}}
+
+  <section class="bg-cream light" id="ways">
+    <div class="wrap give-grid">
+      <div data-reveal>
+        <div class="give-card dark">
+          <svg class="rings-c" width="32" height="18" aria-hidden="true"><use href="#rings"/></svg>
+          <p class="label">Give by Zelle</p>
+          <p class="zelle" id="zelleEmail">familychurchofsandiego<wbr>@gmail.com</p>
+          <div class="meta-rows"><span class="label">Pay to</span><span>familychurchofsandiego@gmail.com</span><span class="label">Memo</span><span>Donation</span></div>
+          <button class="copy" id="copyBtn" type="button">
+            <svg class="i-copy" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 15V6a1 1 0 0 1 1-1h9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg class="i-check" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="copyLabel">Copy email</span>
+          </button>
+          <span class="sr-only" aria-live="polite" id="copyStatus"></span>
+        </div>
+        <div class="steps">
+          <div><span class="label">01</span><p>Open your bank app and choose Zelle.</p></div>
+          <div><span class="label">02</span><p>Send to familychurchofsandiego@gmail.com.</p></div>
+          <div><span class="label">03</span><p>Add "Donation" in the memo, or the name of a special offering.</p></div>
+        </div>
+      </div>
+      <div data-reveal style="--d:120ms">
+        <p class="label">Cash or check</p>
+        <p class="payee">Make checks payable to <b class="nobr" style="font-weight:700">HSA-UWC</b></p>
+        <div class="steps">
+          <div><span class="label">01</span><p>Place cash or checks in the offering on any Sunday.</p></div>
+          <div><span class="label">02</span><p>Or mail a check to the address below.</p></div>
+          <div><span class="label">03</span><p>Write "Family Church of San Diego" in the memo line.</p></div>
+        </div>
+        <p class="address-block">Family Church of San Diego<br>9754 Grosalia Ave<br>La Mesa, CA 91941</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white light" id="where">
+    <div class="wrap">
+      <div class="split">
+        <p class="label" data-reveal>Where it goes</p>
+        <h2 class="h2" data-reveal>Every gift stays <em>close</em> to home.</h2>
+      </div>
+      <div class="pcols" data-stagger>
+        <figure data-reveal><div class="ph"><img src="{{IMG}}/christmas-singers.jpg" alt="Church members singing at the front of the sanctuary" loading="lazy" /></div><span class="label">01</span><h3>Sunday services.</h3><p>The building, the music, the livestream and everything that makes Sunday morning happen.</p></figure>
+        <figure data-reveal><div class="ph"><img src="{{IMG}}/fellowship-dinner.jpg" alt="Church members sharing dinner in the fellowship hall" loading="lazy" style="object-position:50% 80%" /></div><span class="label">02</span><h3>Families and care.</h3><p>Meals, visits and quiet help for members and neighbours going through a hard season.</p></figure>
+        <figure data-reveal><div class="ph"><img src="{{IMG}}/youth-room-billiards.jpg" alt="A father and daughter playing pool in the church youth room" loading="lazy" /></div><span class="label">03</span><h3>Life together.</h3><p>Picnics, youth nights, outings and the small things that turn a congregation into a family.</p></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="band parallax dark" style="padding:0">
+    <div class="img"><img src="{{IMG}}/congregation-2026.jpg" alt="" loading="lazy" style="object-position:50% 70%" /></div>
+    <div class="wash bafc"></div>
+    <div class="wrap" data-reveal style="padding-top:96px;padding-bottom:96px">
+      <div class="rings-div"><svg width="32" height="18"><use href="#rings"/></svg></div>
+      <blockquote>For all things come of thee, and of thine own have we given thee.</blockquote>
+      <cite class="label">1 Chronicles 29:14</cite>
+    </div>
+  </section>
+
+  <section class="bg-cream light">
+    <div class="wrap split">
+      <p class="label" data-reveal>A note on giving</p>
+      <div class="note-col" data-stagger>
+        <p class="statement" data-reveal style="font-size:clamp(22px,2.2vw,26px)">Many in our church practise tithing, giving a tenth of what they receive as an offering of thanks to God. Others give what they can, when they can.</p>
+        <p data-reveal>Every gift, large or small, is received with gratitude. Please give prayerfully and joyfully, and never from pressure.</p>
+        <p data-reveal style="color:var(--muted);font-size:15px">If you would like a receipt for your records, email us and we will send one.</p>
+        <p class="after-link" data-reveal><a class="tlink" style="color:var(--blue-ink)" href="{{HREF:contact}}#message">Questions? Send us a message</a></p>
+      </div>
+    </div>
+  </section>
+</main>
