@@ -55,18 +55,37 @@
   const lp=params.get("live");
   const live={status:lp==="now"?"live":lp==="soon"?"upcoming":"offline",videoId:"VIDEO_ID",startsAt:"11:00 AM"};
 
-  /* ---------- Sundays strip (Home) ---------- */
-  const strip=$("strip");
-  if(strip){
-    for(let i=0;i<8;i++){
-      const d=sunday(i), key=iso(d), next=i===nextServiceIdx, picnic=picnicDays.has(key), off=cancelledDays.has(key), ev=picnicEvent(key);
-      const c=document.createElement("div"); c.className="cell"+(next?" next":"")+(off?" off":"");
-      const top=next?`<span class="tag">${i===0&&add===0?"This Sunday":i===0?"Next Sunday":"Next service"}</span>`:picnic?`<span class="tag"><svg width="14" height="8"><use href="#rings"/></svg>Picnic</span>`:off?`<span class="tag">No service</span>`:`<span class="tag"></span>`;
-      const bottom=next?`<span class="tag">11:00 AM</span>`:picnic?`<span class="tag">${ev.time}<br>No service</span>`:`<span class="tag"></span>`;
-      c.innerHTML=`<div class="fill"></div>${top}<div><p class="label m">${mon(d)}</p><p class="d">${d.getUTCDate()}</p></div>${bottom}`;
-      c.setAttribute("aria-label",longDate(key)+(next?", next service at 11 AM":"")+(picnic?`, church picnic at ${ev.time}, no service`:"")+(off?", no service":""));
-      strip.appendChild(c);
-    }
+  /* ---------- Monthly calendar (Home) ---------- */
+  const calendar=$("gatherCalendar");
+  if(calendar){
+    let month=new Date(Date.UTC(today.getUTCFullYear(),today.getUTCMonth(),1));
+    calendar.innerHTML='<div class="calendar-toolbar"><button type="button" id="calendarPrev" aria-label="Previous month">←</button><h3 id="calendarMonth" aria-live="polite"></h3><button type="button" id="calendarNext" aria-label="Next month">→</button></div><div class="calendar-weekdays" aria-hidden="true">'+['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(day=>'<span>'+day+'</span>').join('')+'</div><div class="calendar-days" id="calendarDays"></div>';
+    const renderCalendar=()=>{
+      $("calendarMonth").textContent=month.toLocaleDateString('en-US',{month:'long',year:'numeric',timeZone:'UTC'});
+      const days=$("calendarDays"); days.replaceChildren();
+      const count=new Date(Date.UTC(month.getUTCFullYear(),month.getUTCMonth()+1,0)).getUTCDate();
+      for(let blank=0;blank<month.getUTCDay();blank++){
+        const cell=document.createElement('div');cell.className='calendar-day empty';cell.setAttribute('aria-hidden','true');days.appendChild(cell);
+      }
+      for(let day=1;day<=count;day++){
+        const date=new Date(Date.UTC(month.getUTCFullYear(),month.getUTCMonth(),day)),key=iso(date);
+        const events=sample.filter(event=>event.date===key);
+        const service=date.getUTCDay()===0&&isServiceSunday(key);
+        const cell=document.createElement('div');
+        cell.className='calendar-day'+(service?' has-service':'')+(events.length?' has-event':'')+(key===iso(today)?' is-today':'');
+        const number=document.createElement('span');number.className='calendar-number num';number.textContent=day;cell.appendChild(number);
+        if(key===iso(today))cell.setAttribute('aria-current','date');
+        const labels=[];
+        if(service)labels.push({text:'Service',details:'Sunday service · 11:00 AM',className:'calendar-service'});
+        events.forEach(event=>labels.push({text:event.title,details:event.title+' · '+event.meta,className:'calendar-event'}));
+        labels.forEach(label=>{const tag=document.createElement('span');tag.className=label.className;tag.textContent=label.text;tag.title=label.details;cell.appendChild(tag);});
+        cell.setAttribute('aria-label',longDate(key)+(labels.length?', '+labels.map(label=>label.details).join('; '):''));
+        days.appendChild(cell);
+      }
+    };
+    $("calendarPrev").addEventListener('click',()=>{month.setUTCMonth(month.getUTCMonth()-1);renderCalendar();});
+    $("calendarNext").addEventListener('click',()=>{month.setUTCMonth(month.getUTCMonth()+1);renderCalendar();});
+    renderCalendar();
   }
 
   /* ---------- service bar picnic mode (every page with a bar) ---------- */
@@ -237,14 +256,9 @@
   if(list) [...list.children].forEach((el,i)=>el.style.setProperty("--d",Math.min(i,5)*60+"ms"));
   const io=new IntersectionObserver(es=>es.forEach(en=>{
     if(!en.isIntersecting) return; io.unobserve(en.target);
-    if(en.target===strip){
-      const cells=[...strip.children];
-      cells.forEach((c,i)=>setTimeout(()=>c.classList.add("in"),reduce?0:i*60));
-      setTimeout(()=>(strip.querySelector(".cell.next")||cells[0]).classList.add("filled"),reduce?0:cells.length*60+150);
-    } else if(en.target===tl){ en.target.classList.add("drawn"); } else en.target.classList.add("in");
+    if(en.target===tl){ en.target.classList.add("drawn"); } else en.target.classList.add("in");
   }),{threshold:.15,rootMargin:"0px 0px -60px 0px"});
   document.querySelectorAll("[data-reveal]").forEach(el=>io.observe(el));
-  if(strip) io.observe(strip);
   if(tl) io.observe(tl);
 
   /* ---------- nav hairline, back to top ---------- */
