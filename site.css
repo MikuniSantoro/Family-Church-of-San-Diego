@@ -330,3 +330,8 @@ footer a{text-decoration:none;transition:color 200ms ease}
 .values-grid .vrow p{max-width:none}
 .upcoming-event-list{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
 @media(max-width:767px){.values-grid,.upcoming-event-list{grid-template-columns:1fr}.values-grid{gap:16px}}
+
+/* Give the home headline room for two deliberate lines */
+.home-hero .hero-grid{grid-template-columns:1fr 5fr}
+.home-hero .headline-line{white-space:nowrap}
+@media(max-width:767px){.home-hero .hero-grid{grid-template-columns:1fr}.home-hero .display{font-size:clamp(24px,7vw,48px)}}
