@@ -322,3 +322,11 @@ footer a{text-decoration:none;transition:color 200ms ease}
 .upcoming-event a:not(.btn){color:var(--blue-ink);text-decoration:underline}
 .event-flyer{display:block;width:50%;height:auto;border-radius:8px;margin:0 auto 20px}
 @media(max-width:600px){.upcoming-event{padding:18px}.upcoming-event h3{font-size:23px}}
+
+/* Home values and events in horizontal rows */
+.values-wrap>.label,.events-wrap>.label{margin-bottom:28px}
+.values-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.values-grid .vrow{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:24px 0;border-top:1px solid var(--line);border-bottom:0;min-width:0}
+.values-grid .vrow p{max-width:none}
+.upcoming-event-list{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+@media(max-width:767px){.values-grid,.upcoming-event-list{grid-template-columns:1fr}.values-grid{gap:16px}}

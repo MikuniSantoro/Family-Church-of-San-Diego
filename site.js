@@ -120,7 +120,7 @@
   if($("nextPicnic")) $("nextPicnic").textContent=nextPicnic?`Next picnic: ${longDate(nextPicnic.date)}, ${nextPicnic.time} at ${nextPicnic.place}.`:"";
   if(nextPicnic&&$("cta-h")){
     $("cta-h").innerHTML=`Picnic Sunday, ${longDate(nextPicnic.date).replace("Sunday, ","")}. Come for the <em>food</em>.`;
-    $("cta-p").textContent=`There is no service that day. We meet at ${nextPicnic.place} at ${nextPicnic.time} instead. Bring your appetite and your family; newcomers are always welcome at the table.`;
+    $("cta-p").textContent=`There is no service that day. We meet at ${nextPicnic.time} instead. Location to be announced. Bring your appetite and your family; newcomers are always welcome at the table.`;
   }
   if($("thisSunday")){
     const ev=picnicEvent(comingKey);
