@@ -125,7 +125,7 @@ for (const pg of pages) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <script>document.documentElement.classList.add("js")</script>
-<link rel="stylesheet" href="site.css?v=google-calendar-1" />
+<link rel="stylesheet" href="site.css?v=event-flyers-1" />
 <link rel="stylesheet" href="pages.css?v=calendar-2" />
 </head>
 <body>
