@@ -48,7 +48,7 @@
 .founders{background:var(--navy);color:var(--white);border-radius:var(--panel-radius);margin:0 16px;padding:72px 0}
 .founders-grid{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center}
 .founders-portrait{aspect-ratio:4/5;background:var(--blue);border-radius:12px;display:grid;place-items:center}
-.founders-portrait img{width:58%;height:auto}
+.founders-portrait img{width:100%;height:100%;object-fit:contain;border-radius:12px}
 .founders .names{display:flex;align-items:center;gap:16px;font:400 clamp(28px,2.8vw,36px)/1.2 var(--serif);margin:14px 0 10px}
 .founders .names svg{flex:none}
 .founders .tp{color:var(--gold-light)}
@@ -318,3 +318,12 @@
   .cta.text-right .wrap{padding-left:calc(40px + 52%)}
   .cta.text-right .h2{max-width:14ch}
 }
+
+/* About beliefs across the page */
+.beliefs-wrap>.label{margin-bottom:28px}
+.beliefs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.beliefs-grid .vrow{display:flex;flex-direction:column;align-items:flex-start;gap:16px;min-width:0;padding:24px 0;border-bottom:0}
+.beliefs-grid .vrow h3{font-size:clamp(24px,2.3vw,34px)}
+.beliefs-grid .vrow p{max-width:none}
+@media(max-width:1000px){.beliefs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.beliefs-grid{grid-template-columns:1fr}}
