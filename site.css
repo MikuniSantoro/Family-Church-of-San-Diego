@@ -307,3 +307,9 @@ footer a{text-decoration:none;transition:color 200ms ease}
 .calendar-event{background:#f0e3b6;color:#594513}
 .calendar-key{display:flex;flex-wrap:wrap;gap:20px;margin-top:14px;font-size:13px}.calendar-key span{display:flex;align-items:center;gap:7px}.calendar-key i{width:10px;height:10px;border-radius:50%;display:inline-block}.service-dot{background:#1470af}.event-dot{background:#a9964f}
 @media(max-width:600px){.calendar-day{min-height:85px;padding:5px 3px}.calendar-service,.calendar-event{font-size:10px;padding:2px}.calendar-toolbar h3{font-size:20px}}
+
+/* Live church Google Calendar */
+.church-google-calendar{margin-top:28px;background:white;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.church-google-calendar iframe{display:block;width:100%;height:600px;border:0}
+.calendar-help{margin-top:12px;font-size:14px}.calendar-help a{color:var(--blue-ink);text-decoration:underline}
+@media(max-width:600px){.church-google-calendar iframe{height:500px}}
