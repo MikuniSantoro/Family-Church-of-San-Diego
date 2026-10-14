@@ -41,28 +41,6 @@
   const comingKey=iso(sunday(0));
   const picnicEvent=key=>sample.find(e=>e.date===key&&/picnic/i.test(e.title));
 
-  /* Previous two messages from the scheduled YouTube playlist sync. */
-  const previousSermons=$("previousSermons");
-  if(previousSermons){
-    fetch('/sermons-data.json',{cache:'no-store'}).then(response=>{
-      if(!response.ok)throw new Error('Sermon data unavailable');
-      return response.json();
-    }).then(data=>{
-      const messages=data.messages.slice(1,3);
-      previousSermons.replaceChildren();
-      messages.forEach(message=>{
-        if(!/^[A-Za-z0-9_-]{11}$/.test(message.id))return;
-        const link=document.createElement('a');link.className='previous-sermon';
-        link.href='https://www.youtube.com/watch?v='+message.id;link.target='_blank';link.rel='noopener';
-        const image=document.createElement('img');image.src='https://i.ytimg.com/vi/'+message.id+'/hqdefault.jpg';
-        image.alt='';image.loading='lazy';image.width=480;image.height=360;
-        const title=document.createElement('h3');title.textContent=message.title;
-        link.append(image,title);previousSermons.appendChild(link);
-      });
-      $("sermonSyncStatus").textContent=previousSermons.children.length?'Previous messages from our Sunday Sermons playlist.':'Browse messages using the playlist menu above.';
-    }).catch(()=>{$("sermonSyncStatus").textContent='Browse previous messages using the playlist menu above, or open the playlist on YouTube.';});
-  }
-
   /* ---------- SAMPLE sermons (real site: /api/sermons). Real videos from the channel. ---------- */
   const sermons=[
     {id:"7MTtL2mcXF8",title:"The Reality of a Spirit World that Wants to Help Us",speaker:"Co-Pastor Jasmine Santoro",date:"Aug 16, 2026"},
