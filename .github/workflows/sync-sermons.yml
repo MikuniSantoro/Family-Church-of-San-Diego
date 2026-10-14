@@ -36,9 +36,10 @@ jobs:
         run: python scripts/sync-sermons.py
       - name: Prepare public website files
         run: |
+          python scripts/prepare-pages.py
           mkdir -p _site
           cp index.html home-preview.html about.html sermons.html contact.html donate.html privacy.html newsletter-confirmed.html *.css site.js *.jpg *.png *.webp robots.txt sitemap.xml _site/
-          cp home-preview.html _site/index.html
+          cp -R about sermons contact donate privacy newsletter _site/
           if [ -f sermons-data.json ]; then cp sermons-data.json _site/; fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
