@@ -176,15 +176,15 @@
   <div class="wrap">
     <div class="nl split">
       <div>
-        <p class="label">The Sunday Letter</p>
-        <h2 class="h2 nl-h">One email a week from your church <em>family</em>.</h2>
+        <p class="label">Newsletter</p>
+        <h2 class="h2 nl-h">Sign Up For Our Weekly Newsletter</h2>
       </div>
       <div class="nl-right">
-        <p class="nl-body">This Sunday's message, what is coming up, and a reminder before every picnic. No spam, and you can unsubscribe in one click.</p>
+        <p class="nl-body">Keep up to date with what's happening in our local community. No spam, and you can unsubscribe with one reply.</p>
         <form class="nl-form" id="nlForm" novalidate>
           <div class="nl-field">
-            <label class="label" for="nlName">First name <span class="opt">Optional</span></label>
-            <input id="nlName" name="firstName" type="text" autocomplete="given-name" maxlength="80" />
+            <label class="label" for="nlName">Full name</label>
+            <input id="nlName" name="name" type="text" autocomplete="name" maxlength="160" required />
           </div>
           <div class="nl-field">
             <label class="label" for="nlEmail">Email</label>
@@ -193,11 +193,11 @@
           <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <button class="btn btn-white nl-btn" type="submit"><span class="nl-btn-text">Sign me up</span> <span class="circ"><svg class="arr" width="16" height="16"><use href="#arrow"/></svg><span class="spin" aria-hidden="true"></span></span></button>
           <p class="nl-err" id="nlErr"></p>
-          <p class="nl-small">We will send one email to confirm. See our <a href="/privacy/">privacy note</a>.</p>
+          <p class="nl-small">Your name and email will be sent to our church newsletter team. See our <a href="/privacy/">privacy note</a>.</p>
         </form>
         <div class="nl-done" id="nlDone" tabindex="-1" hidden>
-          <p class="nl-done-h">Almost there.</p>
-          <p class="nl-body">We just sent a confirmation link to <b id="nlAddr"></b>. Open it to start receiving the Sunday Letter.</p>
+          <p class="nl-done-h">Thank you for signing up.</p>
+          <p class="nl-body">We will include you in our next newsletter for this week!</p>
           <button class="tlink nl-reset" id="nlReset" type="button">Use a different email</button>
         </div>
         <p class="sr-only" aria-live="polite" id="nlLive"></p>
@@ -221,6 +221,7 @@
 
 <button class="totop" id="totop" aria-label="Back to top"><svg width="20" height="20"><use href="#up"/></svg></button>
 
-<script src="/site.js?v=clean-routes-1"></script>
+<script src="/newsletter-config.js?v=1"></script>
+<script src="/site.js?v=newsletter-2"></script>
 </body>
 </html>

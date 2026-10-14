@@ -301,25 +301,36 @@
   closeBtn.addEventListener("click",()=>setOpen(false));
   addEventListener("keydown",e=>{if(e.key==="Escape"&&sheet.classList.contains("open"))setOpen(false)});
 
-  /* ---------- newsletter band (SIMULATED; real site posts to /api/subscribe) ---------- */
+  /* ---------- Newsletter signup: send only through the configured form service. ---------- */
   const nlForm=$("nlForm");
   if(nlForm){
-    const nlEmail=$("nlEmail"), nlErr=$("nlErr"), nlDone=$("nlDone"), nlLive=$("nlLive"), nlBtn=nlForm.querySelector(".nl-btn");
-    let shownError=false, busy=false;
-    const validEmail=v=>v.length>0&&v.length<=254&&/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
-    const setErr=m=>{nlErr.textContent=m;nlErr.classList.toggle("show",!!m);nlEmail.setAttribute("aria-invalid",m?"true":"false");if(m)nlLive.textContent=m;};
-    nlEmail.addEventListener("input",()=>{if(shownError)setErr(validEmail(nlEmail.value.trim().toLowerCase())?"":"Please enter a full email address, like name@example.com.")});
-    nlForm.addEventListener("submit",e=>{
-      e.preventDefault(); if(busy) return;
-      const email=nlEmail.value.trim().toLowerCase();
-      if(!validEmail(email)){shownError=true;setErr("Please enter a full email address, like name@example.com.");nlEmail.focus();return;}
-      setErr(""); busy=true; nlBtn.disabled=true; nlBtn.classList.add("busy"); nlBtn.querySelector(".nl-btn-text").textContent="Signing up";
-      setTimeout(()=>{
-        busy=false; nlBtn.disabled=false; nlBtn.classList.remove("busy"); nlBtn.querySelector(".nl-btn-text").textContent="Sign me up";
-        $("nlAddr").textContent=email; nlForm.style.opacity="0";
-        setTimeout(()=>{nlForm.hidden=true;nlDone.hidden=false;requestAnimationFrame(()=>nlDone.classList.add("show"));nlDone.focus();nlLive.textContent="Almost there. Check your inbox to confirm.";},reduce?0:250);
-      },900);
+    const nlName=$("nlName"), nlEmail=$("nlEmail"), nlErr=$("nlErr"), nlDone=$("nlDone"), nlLive=$("nlLive"), nlBtn=nlForm.querySelector(".nl-btn");
+    let busy=false;
+    const setErr=(message,field)=>{
+      nlErr.textContent=message;nlErr.classList.toggle("show",!!message);
+      [nlName,nlEmail].forEach(input=>input.removeAttribute('aria-invalid'));
+      if(field&&message)field.setAttribute('aria-invalid','true');
+      if(message)nlLive.textContent=message;
+    };
+    nlForm.addEventListener("submit",async e=>{
+      e.preventDefault();if(busy)return;
+      const name=nlName.value.trim(),email=nlEmail.value.trim();
+      if(!name){setErr('Please enter your full name.',nlName);nlName.focus();return;}
+      if(!nlEmail.validity.valid||email.length>254){setErr('Please enter a full email address, like name@example.com.',nlEmail);nlEmail.focus();return;}
+      const endpoint=window.CHURCH_NEWSLETTER_ENDPOINT||'';
+      if(!/^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+$/.test(endpoint)){
+        setErr('Online signup is not connected yet. Please email familychurchofsandiego@gmail.com to join our newsletter.');return;
+      }
+      setErr('');busy=true;nlBtn.disabled=true;nlBtn.classList.add('busy');nlBtn.querySelector('.nl-btn-text').textContent='Signing up';
+      try{
+        const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name,email,_subject:'New weekly newsletter signup',_gotcha:nlForm.elements.company.value})});
+        if(!response.ok)throw new Error('Submission not accepted');
+        const result=await response.json();if(result.errors||result.ok===false)throw new Error('Submission rejected');
+        nlForm.hidden=true;nlDone.hidden=false;requestAnimationFrame(()=>nlDone.classList.add('show'));nlDone.focus();
+        nlLive.textContent='Thank you for signing up. We will include you in our next newsletter for this week!';
+      }catch(error){setErr('We could not submit your signup. Please try again, or email familychurchofsandiego@gmail.com.');}
+      finally{busy=false;nlBtn.disabled=false;nlBtn.classList.remove('busy');nlBtn.querySelector('.nl-btn-text').textContent='Sign me up';}
     });
-    $("nlReset").addEventListener("click",()=>{nlDone.classList.remove("show");nlDone.hidden=true;nlForm.hidden=false;nlForm.style.opacity="1";nlForm.reset();shownError=false;setErr("");nlEmail.focus();});
+    $("nlReset").addEventListener('click',()=>{nlDone.classList.remove('show');nlDone.hidden=true;nlForm.hidden=false;nlForm.reset();setErr('');nlLive.textContent='';nlName.focus();});
   }
 })();
