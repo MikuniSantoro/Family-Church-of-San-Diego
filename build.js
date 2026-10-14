@@ -138,7 +138,7 @@ ${body.trim()}
 
 ${footer(pg.noNewsletter)}
 
-<script src="/newsletter-config.js?v=1"></script>
+<script src="/newsletter-config.js?v=2"></script>
 <script src="site.js?v=home-layout-3"></script>
 </body>
 </html>
