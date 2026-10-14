@@ -44,7 +44,7 @@
   /* Previous two messages from the scheduled YouTube playlist sync. */
   const previousSermons=$("previousSermons");
   if(previousSermons){
-    fetch('sermons-data.json',{cache:'no-store'}).then(response=>{
+    fetch('/sermons-data.json',{cache:'no-store'}).then(response=>{
       if(!response.ok)throw new Error('Sermon data unavailable');
       return response.json();
     }).then(data=>{

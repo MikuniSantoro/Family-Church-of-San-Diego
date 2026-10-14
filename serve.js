@@ -6,6 +6,7 @@ http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split("?")[0]);
   if (p === "/") p = "/index.html";
   if (p === "/preview" || p === "/preview/") { res.writeHead(302, { Location: "/home-preview.html" }); return res.end(); }
+  if (p.endsWith("/")) p += "index.html";
   const file = path.join(root, path.normalize(p));
   if (!file.startsWith(root)) { res.writeHead(403); return res.end(); }
   fs.readFile(file, (err, data) => {
