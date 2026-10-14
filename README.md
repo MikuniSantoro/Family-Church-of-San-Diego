@@ -13,6 +13,6 @@
 
 **How to run them:** give an AI `../PROMPT.md` first and build the foundation and Home (build order steps 1 to 4). Then give it one page file at a time, with `../PROMPT.md` still in context, in the order above. Each page file says which sections of the master prompt it relies on.
 
-**Preview:** run `node serve.js` from this repository folder, then open `http://localhost:5178`. The server opens `home-preview.html`; photos, stylesheets, and JavaScript are stored alongside the pages. Use the local server when previewing: asset links are rooted at the website domain. Public pages use /about/, /sermons/, /contact/, /donate/, and /privacy/. Run `python3 scripts/prepare-pages.py` after editing the root HTML files to refresh their directory index pages; deployment does this automatically.
+**Preview:** run `node serve.js` from this repository folder, then open `http://localhost:5178`. The server opens `index.html`; photos, stylesheets, and JavaScript are stored alongside the pages. Use the local server when previewing: asset links are rooted at the website domain. Public pages use /about/, /sermons/, /contact/, /donate/, and /privacy/. Run `python3 scripts/prepare-pages.py` after editing the root HTML files (edit index.html for the homepage) to refresh their directory index pages; deployment does this automatically.
 
 The previews use sample calendar, sermon, and live data. `build.js` currently requires missing `src/*.html` source files, so use the existing preview pages rather than running the build.

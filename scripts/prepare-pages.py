@@ -6,4 +6,4 @@ for source, route in ROUTES.items():
     destination = Path(route) / 'index.html'
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(Path(source + '.html').read_text())
-Path('index.html').write_text(Path('home-preview.html').read_text())
+# index.html is the authoritative homepage. Never copy the legacy redirect over it.
