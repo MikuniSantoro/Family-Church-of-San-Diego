@@ -1,10 +1,11 @@
 // Tiny static server for previewing familychurch-sd locally: node serve.js
 const http = require("http"), fs = require("fs"), path = require("path");
 const root = __dirname, port = Number(process.env.PORT) || 5178;
-const types = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".jpg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".svg": "image/svg+xml" };
+const types = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".jpg": "image/jpeg", ".png": "image/png", ".webp": "image/webp", ".svg": "image/svg+xml", ".xml": "application/xml", ".txt": "text/plain", ".json": "application/json" };
 http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split("?")[0]);
-  if (p === "/" || p === "/preview" || p === "/preview/") { res.writeHead(302, { Location: "/home-preview.html" }); return res.end(); }
+  if (p === "/") p = "/index.html";
+  if (p === "/preview" || p === "/preview/") { res.writeHead(302, { Location: "/home-preview.html" }); return res.end(); }
   const file = path.join(root, path.normalize(p));
   if (!file.startsWith(root)) { res.writeHead(403); return res.end(); }
   fs.readFile(file, (err, data) => {
