@@ -1,0 +1,43 @@
+name: Sync sermons and publish website
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [fix/preview-photo-paths]
+    paths-ignore: ['README.md', '**/*.md']
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: church-pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/preview-photo-paths
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Refresh playlist metadata
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/sync-sermons.py
+      - name: Prepare public website files
+        run: |
+          mkdir -p _site
+          cp *.html *.css *.js *.jpg *.png *.webp sermons-data.json _site/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Publish website
+        id: deployment
+        uses: actions/deploy-pages@v4

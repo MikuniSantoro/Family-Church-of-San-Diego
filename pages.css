@@ -327,3 +327,10 @@
 .beliefs-grid .vrow p{max-width:none}
 @media(max-width:1000px){.beliefs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.beliefs-grid{grid-template-columns:1fr}}
+
+.previous-sermons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-bottom:20px}
+.previous-sermon{display:block;color:var(--ink);text-decoration:none;min-width:0}
+.previous-sermon img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.previous-sermon h3{font:400 22px/1.3 var(--serif);margin-top:12px}
+.previous-sermon:hover h3{text-decoration:underline}
+@media(max-width:600px){.previous-sermons{grid-template-columns:1fr}}
